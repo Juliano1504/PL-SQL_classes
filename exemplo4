@@ -1,0 +1,24 @@
+SET SERVEROUTPUT ON
+DECLARE
+V_NOME VARCHAR2(30);
+V_CDG NUMBER;
+BEGIN
+    FOR  F IN 1..18
+    LOOP
+        BEGIN
+          SELECT UPPER (NOM_FUNC), 
+                        COD_FUNC
+            INTO V_NOME,
+                 V_CDG
+            FROM PRO_FUNC
+            WHERE COD_FUNC = F;
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+            DBMS_OUTPUT.PUT_LINE('Funcionário não encontrado - Código = ' ||F);
+        END;
+            
+           IF V_NOME LIKE 'YASMIN%' THEN
+                DBMS_OUTPUT.PUT_LINE (V_NOME ||' - '|| V_CDG);
+            END IF;
+    END LOOP;
+END;
