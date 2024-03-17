@@ -1,0 +1,39 @@
+SET SERVEROUTPUT ON
+DECLARE
+    V_NOME VARCHAR2(50);
+    V_SALARIO NUMBER(10,2);
+BEGIN
+    SELECT F.NOM_FUNC, VL_SALARIO
+    INTO V_NOME, V_SALARIO
+    FROM PRO_FUNC F
+    WHERE F.COD_FUNC = 1; 
+    
+    IF V_SALARIO > 3000 THEN
+        DBMS_OUTPUT.PUT_LINE('Funcionário possui salário igual a: '||v_salario);
+    ELSIF V_SALARIO > 2500
+        AND V_SALARIO < 3000 THEN
+        DBMS_OUTPUT.PUT_LINE('Funcionário com faixa maior 2500 e menor que 3000: ');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Funcionário possui salário igual a: '||v_salario);
+    END IF;
+    DBMS_OUTPUT.PUT_LINE(V_NOME ||' - '|| V_SALARIO);
+    
+    CASE 
+        WHEN V_SALARIO > 5000 THEN
+        DBMS_OUTPUT.PUT_LINE('Funcionário com faixa maior 5000 MIL ');
+        WHEN V_SALARIO > 2500
+        AND V_SALARIO < 3000 THEN
+        DBMS_OUTPUT.PUT_LINE('Funcionário com salário entre 2500 e 3000 mil');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Funcionário com salário'||v_salario);
+    END CASE;
+EXCEPTION 
+    WHEN NO_DATA_FOUND THEN 
+    DBMS_OUTPUT.PUT_LINE('Funcionário não cadastrado ' ||sqlerrm);
+END;
+
+
+select * from pro_func where vl_salario >=3000
+SELECT F.NOM_FUNC
+FROM PRO_FUNC F
+WHERE F.COD_FUNC = 5;
