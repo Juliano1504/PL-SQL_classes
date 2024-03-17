@@ -1,0 +1,42 @@
+DECLARE
+    CURSOR C_1 IS
+    SELECT UPPER (NOM_FUNC) NOM_FUNC, 
+                  COD_FUNC
+            FROM PRO_FUNC;
+
+    V_NOME VARCHAR2(30);
+    V_CDG NUMBER;
+BEGIN
+   OPEN C_1;
+    LOOP
+    FETCH C_1
+     INTO V_NOME,V_CDG;
+     EXIT WHEN C_1%NOTFOUND;
+        IF V_NOME LIKE 'YASMIN%' THEN
+             DBMS_OUTPUT.PUT_LINE (V_NOME ||' - '|| V_CDG);
+            END IF;
+    END LOOP;
+    CLOSE C_1;
+END;
+
+
+-----
+
+
+DECLARE
+    CURSOR C_1 IS
+    SELECT * FROM PRO_FUNC;
+
+    R_FUNC PRO_FUNC%ROWTYPE;
+BEGIN
+   OPEN C_1;
+    LOOP
+    FETCH C_1
+     INTO R_FUNC;
+     EXIT WHEN C_1%NOTFOUND;
+        IF R_FUNC.NOM_FUNC LIKE 'YASMIN%' THEN
+             DBMS_OUTPUT.PUT_LINE (R_FUNC.COD_FUNC ||' - '|| R_FUNC.NOM_FUNC);
+            END IF;
+    END LOOP;
+    CLOSE C_1;
+END;
