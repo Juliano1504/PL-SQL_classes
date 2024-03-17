@@ -1,0 +1,8 @@
+BEGIN
+    FOR TESTE IN 1..10
+    LOOP
+        IF TESTE = 7 THEN
+        DBMS_OUTPUT.PUT_LINE(TESTE);
+        END IF; 
+    END LOOP;
+END;
