@@ -1,0 +1,14 @@
+DECLARE
+QTD NUMBER := 0;
+
+BEGIN
+
+    WHILE QTD < 10
+    LOOP
+        QTD := QTD + 1;
+        
+        IF QTD IN (4,7,9) THEN
+            DBMS_OUTPUT.PUT_LINE(QTD);
+        END IF;
+    END LOOP;
+END;
