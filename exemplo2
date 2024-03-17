@@ -1,0 +1,18 @@
+SET SERVEROUTPUT ON
+DECLARE
+V_NOME VARCHAR2(30);
+V_QTD NUMBER := 0;
+BEGIN
+    LOOP
+    V_QTD := V_QTD + 1;
+          SELECT UPPER (NOM_FUNC)
+            INTO V_NOME
+            FROM PRO_FUNC
+            WHERE COD_FUNC = V_QTD;
+           IF V_NOME LIKE 'YASMIN%' THEN
+                DBMS_OUTPUT.PUT_LINE (V_NOME);
+                EXIT;
+            END IF;
+            EXIT WHEN V_QTD = 30;
+    END LOOP;
+END;
