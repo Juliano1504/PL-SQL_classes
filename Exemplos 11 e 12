@@ -1,0 +1,33 @@
+set serveroutput on
+DECLARE  
+BEGIN
+    FOR teste in 1..15
+    LOOP
+    if teste = 5 then
+    dbms_output.put_line('Quantidade chegou a 5');
+    elsif teste = 8 then
+    dbms_output.put_line('Programa finalizado' ||' '|| teste);
+    else 
+    dbms_output.put_line('Quantidade diferente de ||teste');
+    end if;
+    END LOOP;
+END;
+
+
+------
+
+
+SET SERVEROUTPUT ON
+DECLARE
+
+BEGIN
+   FOR F_C_1 IN (SELECT * FROM PRO_FUNC)
+   LOOP
+     IF F_C_1.NOM_FUNC LIKE 'YASMIN%' THEN
+       DBMS_OUTPUT.PUT_LINE (F_C_1.COD_FUNC||' '||F_C_1.NOM_FUNC);      
+     END IF;
+    -- IF R_FUNC.VL_SALARIO = 1600 THEN
+        DBMS_OUTPUT.PUT_LINE (F_C_1.NOM_FUNC);
+    -- END IF;
+  END LOOP;
+END;
