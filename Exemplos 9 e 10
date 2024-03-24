@@ -1,0 +1,40 @@
+set serveroutput on
+DECLARE
+    v_qtd number := 0;
+    
+BEGIN
+    LOOP
+    v_qtd := v_qtd +1;
+    if v_qtd = 5 then
+    dbms_output.put_line('Quantidade chegou a 5');
+    elsif v_qtd = 8 then
+    dbms_output.put_line('Programa finalizado' ||' '|| v_qtd);
+    exit;
+    else 
+    dbms_output.put_line('Quantidade diferente de 5');
+    end if;
+    -- exit when v_qtd = 10;
+    END LOOP;
+END;
+
+
+------
+
+
+set serveroutput on
+DECLARE
+    v_qtd number := 0;
+    
+BEGIN
+    WHILE v_qtd > 12 
+    LOOP
+    v_qtd := v_qtd +1;
+    if v_qtd = 5 then
+    dbms_output.put_line('Quantidade chegou a 5');
+    elsif v_qtd = 8 then
+    dbms_output.put_line('Programa finalizado' ||' '|| v_qtd);
+    else 
+    dbms_output.put_line('Quantidade diferente de ||v_qtd');
+    end if;
+    END LOOP;
+END;
