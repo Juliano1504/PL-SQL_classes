@@ -1,0 +1,27 @@
+SET SERVEROUTPUT ON
+
+DECLARE 
+ CURSOR C2 IS
+ SELECT COUNT(*) QTD,
+    pro_depto,nm_dpto
+    FROM pro_func, 
+         pro_depto
+    WHERE pro_func.cod_dpto = pro_depto.cod_dpto
+    AND pro_depto.nm_dpto IN ('TI','VENDAS')
+    GROUP BY pro_depto.nm_dpto;
+    
+    v_qtd_dep number;
+BEGIN
+    FOR F_C2 IN C2
+    LOOP
+     IF  v_qtd_dep IS NULL THEN
+         v_qtd_dep := F_C2.QTD;
+    ELSE
+         IF  v_qtd_dep > F_C2.QTD then
+         DBMS_OUTPUT.PUT_LINE ('Departamento de TI é maior que setor de vendas');
+         ELSE 
+         DBMS_OUTPUT.PUT_LINE ('Departamento de Vendas é maior que setor de TI');
+         END IF;
+      END IF;
+     END LOOP;
+END;
